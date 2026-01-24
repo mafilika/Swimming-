@@ -26,7 +26,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 18px 60px;
-    background: var(--white);
+    background: var(--blue-light);
     border-bottom: 1px solid #eee;
 }
 
@@ -114,7 +114,7 @@ body {
 .service-card {
     padding: 18px;
     border: 1px solid #ddd;
-    background: var(--white);
+    background: var(--blue);
     border-radius: 6px;
     font-weight: 500;
 }
@@ -143,7 +143,7 @@ body {
 /* Footer */
 .footer {
     background: var(--charcoal);
-    color: var(--white);
+    color: var(--blue);
     padding: 60px;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
@@ -151,7 +151,7 @@ body {
 }
 
 .footer a {
-    color: var(--white);
+    color: var(--blue);
     display: block;
     margin: 4px 0;
     text-decoration: none;
