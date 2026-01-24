@@ -46,7 +46,7 @@ body {
 .btn-nav {
     padding: 8px 16px;
     border-radius: 4px;
-    background: var(--blue);
+    background: var(--charcoal);
     color: var(--white)!important;
 }
 
