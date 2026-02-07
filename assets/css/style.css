@@ -283,3 +283,56 @@ form input, form textarea {
   font-size: 35px;
   cursor: pointer;
 }
+
+.faq-section {
+  padding: 80px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.faq-title {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.faq {
+  max-width: 750px;
+  margin: auto;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 18px 20px;
+  background: #0d4c8b;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq-question:hover {
+  background: #083866;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: #f6f6f6;
+  transition: max-height 0.35s ease;
+  padding: 0 20px;
+}
+
+.faq-answer p {
+  padding: 15px 0;
+  margin: 0;
+    }
