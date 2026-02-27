@@ -221,5 +221,24 @@
         <a href="contact.html">Contact</a>
     </div>
     </footer>
+    <script>
+const questions = document.querySelectorAll(".faq-question");
+
+questions.forEach(q => {
+  q.addEventListener("click", () => {
+    const answer = q.nextElementSibling;
+
+    // close others
+    document.querySelectorAll(".faq-answer").forEach(a => {
+      if (a !== answer) a.style.maxHeight = null;
+    });
+
+    // toggle current
+    answer.style.maxHeight = answer.style.maxHeight
+      ? null
+      : answer.scrollHeight + "px";
+  });
+});
+    </script>
 </body>
   </html>
