@@ -398,7 +398,7 @@ function saveArea() {
   userData.area = area;
 
   typing(
-    "We currently have ONLY 2 free consultation slots today.\n\nConsultation Fee: R570\n\nGUARANTEE: If we don’t finish your project on time, you don’t pay anything.",
+    "We currently have ONLY 2 free consultation slots today.\n\nConsultation Fee: R570\n\nAnd Our GUARANTEE: If we don’t finish your project on time, you don’t pay anything.",
     () => {
       document.getElementById("chatbot-body").innerHTML += `
         <div class="chat-option" onclick="goWhatsApp()">Secure My Slot</div>
@@ -417,6 +417,66 @@ function goWhatsApp() {
 
   window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 }
+
+    let hasOpened = false;
+
+// AUTO POPUP AFTER 4 SECONDS
+setTimeout(() => {
+  if (!hasOpened) {
+    openChatbot();
+  }
+}, 4000);
+
+// OPEN FUNCTION
+function openChatbot() {
+  const box = document.getElementById("chatbot-box");
+  box.style.display = "block";
+  hasOpened = true;
+
+  interruptMessage();
+}
+
+// SHAKE EFFECT
+function shakeButton() {
+  const btn = document.getElementById("chatbot-btn");
+  btn.style.transition = "0.1s";
+  
+  let i = 0;
+  let interval = setInterval(() => {
+    btn.style.transform = `translateX(${i % 2 === 0 ? 5 : -5}px)`;
+    i++;
+    if (i > 6) {
+      clearInterval(interval);
+      btn.style.transform = "translateX(0)";
+    }
+  }, 100);
+}
+
+// INTERRUPT MESSAGE (HIGH CONVERSION)
+function interruptMessage() {
+  const body = document.getElementById("chatbot-body");
+
+  body.innerHTML = `
+    <p><b>⚠️ Before you leave...</b></p>
+
+    <p>We currently have <b>ONLY 2 FREE consultation slots</b> available this week before We are Fully booked in Cape Town.</p>
+
+    <p style="color:red;"><b>And Our Guarantee:</b> If we don’t finish your pool project on time, you don’t pay anything.</p>
+
+    <p>Consultation Fee: <b>R570</b></p>
+
+    <p>Do you want to secure your slot now?</p>
+
+    <div class="chat-option" onclick="startChat()">Yes, show me options</div>
+    <div class="chat-option" onclick="closeChat()">No, I’ll come back later</div>
+  `;
+}
+
+// CLOSE CHAT
+function closeChat() {
+  document.getElementById("chatbot-box").style.display = "none";
+}
+
 </script>
 </body>
 </html>
