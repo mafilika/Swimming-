@@ -1,37 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog Post | R&R Swimming Pools</title>
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
-
-<body>
-
-<header class="header">
-  <div class="logo">R&R Swimming Pools & Projects</div>
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html" class="btn-nav">Contact</a>
-  </nav>
-</header>
-
-<section class="section" id="postContainer">
-  <h1>Loading post...</h1>
-</section>
-
 <script>
-// GET POST ID FROM URL
+// GET POST ID
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
 
-// CONTENTFUL CONFIG
+// CONFIG
 const SPACE_ID = "0w1hbdkrnr1w";
 const ACCESS_TOKEN = "_eV2RjSSBWbBJaRHWhGg2wG3gVy3atzdXQTlGYdvk4w";
 
-// FETCH SINGLE POST
+// 🔥 RENDER RICH TEXT
+function renderRichText(node) {
+  if (!node) return "";
+
+  if (node.nodeType === "text") {
+    return node.value;
+  }
+
+  let html = "";
+
+  if (node.content) {
+    node.content.forEach(child => {
+      html += renderRichText(child);
+    });
+  }
+
+  switch (node.nodeType) {
+    case "paragraph":
+      return `<p style="margin-bottom:15px;line-height:1.7;">${html}</p>`;
+
+    case "heading-1":
+      return `<h1 style="margin:20px 0;">${html}</h1>`;
+
+    case "heading-2":
+      return `<h2 style="margin:20px 0;">${html}</h2>`;
+
+    case "heading-3":
+      return `<h3 style="margin:15px 0;">${html}</h3>`;
+
+    case "unordered-list":
+      return `<ul style="padding-left:20px;">${html}</ul>`;
+
+    case "ordered-list":
+      return `<ol style="padding-left:20px;">${html}</ol>`;
+
+    case "list-item":
+      return `<li>${html}</li>`;
+
+    case "embedded-asset-block":
+      const assetId = node.data.target.sys.id;
+      const asset = window.assetsMap[assetId];
+      return asset ? `<img src="https:${asset}" style="width:100%;margin:20px 0;border-radius:10px;">` : "";
+
+    default:
+      return html;
+  }
+}
+
+// FETCH POST
 async function fetchPost() {
   try {
     const res = await fetch(`https://cdn.contentful.com/spaces/${SPACE_ID}/entries/${postId}?access_token=${ACCESS_TOKEN}&include=2`);
@@ -39,13 +63,20 @@ async function fetchPost() {
 
     const container = document.getElementById("postContainer");
 
+    // 🔥 MAP IMAGES
+    window.assetsMap = {};
+    data.includes?.Asset?.forEach(asset => {
+      window.assetsMap[asset.sys.id] = asset.fields.file.url;
+    });
+
     const title = data.fields.title;
-    const content = data.fields.content;
+    const content = renderRichText(data.fields.content);
 
     container.innerHTML = `
       <h1 style="font-size:36px;margin-bottom:20px">${title}</h1>
-      <div style="max-width:800px;line-height:1.7;font-size:16px">
-        ${typeof content === "string" ? content : "Content format needs upgrade"}
+
+      <div style="max-width:800px;margin:auto;">
+        ${content}
       </div>
 
       <a href="https://wa.me/27720207880" class="btn-primary" style="margin-top:30px;display:inline-block;">
@@ -60,7 +91,4 @@ async function fetchPost() {
 }
 
 fetchPost();
-</script>
-
-</body>
-</html>
+      </script>
