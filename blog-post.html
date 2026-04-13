@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Post | R&R Swimming Pools</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">R&R Swimming Pools & Projects</div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="btn-nav">Contact</a>
+  </nav>
+</header>
+
+<section class="section" id="postContainer">
+  <h1>Loading post...</h1>
+</section>
+
+<script>
+// GET POST ID FROM URL
+const params = new URLSearchParams(window.location.search);
+const postId = params.get("id");
+
+// CONTENTFUL CONFIG
+const SPACE_ID = "YOUR_SPACE_ID";
+const ACCESS_TOKEN = "YOUR_ACCESS_TOKEN";
+
+// FETCH SINGLE POST
+async function fetchPost() {
+  try {
+    const res = await fetch(`https://cdn.contentful.com/spaces/${SPACE_ID}/entries/${postId}?access_token=${ACCESS_TOKEN}&include=2`);
+    const data = await res.json();
+
+    const container = document.getElementById("postContainer");
+
+    const title = data.fields.title;
+    const content = data.fields.content;
+
+    container.innerHTML = `
+      <h1 style="font-size:36px;margin-bottom:20px">${title}</h1>
+      <div style="max-width:800px;line-height:1.7;font-size:16px">
+        ${typeof content === "string" ? content : "Content format needs upgrade"}
+      </div>
+
+      <a href="https://wa.me/27617377124" class="btn-primary" style="margin-top:30px;display:inline-block;">
+        Get a Quote on WhatsApp
+      </a>
+    `;
+
+  } catch (error) {
+    document.getElementById("postContainer").innerHTML = "Failed to load post.";
+    console.error(error);
+  }
+}
+
+fetchPost();
+</script>
+
+</body>
+</html>
