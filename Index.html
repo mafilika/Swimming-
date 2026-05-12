@@ -412,7 +412,7 @@ function saveArea() {
   userData.area = area;
 
   typing(
-    "We currently have ONLY 2 free consultation slots today.\n\nConsultation Fee: R570\n\nAnd Our GUARANTEE: If we don’t finish your project on time, you don’t pay anything.",
+    "We currently have ONLY 2 free consultation slots today.\n\n\nAnd Our GUARANTEE: If we don’t finish your project on time, you don’t pay anything.",
     () => {
       document.getElementById("chatbot-body").innerHTML += `
         <div class="chat-option" onclick="goWhatsApp()">Secure My Slot</div>
@@ -426,7 +426,7 @@ function goWhatsApp() {
     "Hi, my name is " + userData.name +
     ". I'm in " + userData.area +
     ". I want a " + userData.service +
-    ". I want to secure one of the 2 consultation slots and understand its Free From R570 fee and guarantee."
+    ". I want to secure one of the 2 consultation slots and understand its Free From Consultation fee and guarantee is promised as Our Commitment."
   );
 
   window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
