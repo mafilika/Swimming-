@@ -16,6 +16,427 @@
   <title>About R & R Swimming & Projects | Stradfontein, Cape Town Pool & Construction Experts</title>
       <meta name="description" content="Looking for pools near me in Cape Town? R&R Swimming Pools and Projects are expert pool builders in Cape Town specializing in custom swimming pool construction, pool renovations, pool repairs, and luxury outdoor living spaces. We design and build high-quality new pools, modern family pools, spa-style swimming pools, and complete backyard transformations. Trusted Cape Town swimming pool contractors delivering durable, climate-resistant pools with expert craftsmanship and seamless project management.">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#fff;
+color:#222;
+line-height:1.6;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#0a2540;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+color:#fff;
+font-weight:800;
+font-size:20px;
+}
+
+.nav{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:#fff;
+text-decoration:none;
+font-weight:600;
+}
+
+.btn-nav{
+background:#fff;
+color:#0a2540 !important;
+padding:10px 18px;
+border-radius:5px;
+}
+
+.hero{
+height:90vh;
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+url('https://images.ctfassets.net/09muo917z9ra/T802fTgxSy2TwYNKk11i1/045086d3912f2de431121eda24c1bae0/FB_IMG_1769763393373.jpg');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+.hero-content{
+max-width:900px;
+color:#fff;
+}
+
+.hero h1{
+font-size:52px;
+margin-bottom:20px;
+font-weight:800;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn-primary,
+.btn-secondary{
+padding:15px 28px;
+text-decoration:none;
+font-weight:700;
+border-radius:6px;
+display:inline-block;
+}
+
+.btn-primary{
+background:#0a2540;
+color:#fff;
+}
+
+.btn-secondary{
+background:#25D366;
+color:#fff;
+}
+
+.trust-bar{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:30px 8%;
+background:#f8f8f8;
+text-align:center;
+}
+
+.trust-item{
+font-weight:700;
+}
+
+.section{
+padding:80px 8%;
+}
+
+.section-title{
+text-align:center;
+font-size:40px;
+margin-bottom:50px;
+color:#0a2540;
+font-weight:800;
+}
+
+.service-category{
+margin:40px 0 20px;
+font-size:28px;
+color:#0a2540;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.service-card{
+background:#fff;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+font-weight:600;
+transition:0.3s;
+}
+
+.service-card:hover{
+transform:translateY(-5px);
+}
+
+.cinematic-wrapper{
+padding:50px 8%;
+}
+
+.scene{
+position:relative;
+overflow:hidden;
+border-radius:12px;
+}
+
+.scene img{
+width:100%;
+height:500px;
+object-fit:cover;
+display:block;
+}
+
+.scene-text{
+position:absolute;
+bottom:40px;
+left:40px;
+color:#fff;
+}
+
+.scene-text h2{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.gallery-grid img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.process-grid,
+.testimonials-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.process-card,
+.testimonial-card{
+background:#fff;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.process-card span{
+font-size:40px;
+font-weight:800;
+color:#0a2540;
+display:block;
+margin-bottom:15px;
+}
+
+.testimonial-card h4{
+margin-top:20px;
+color:#0a2540;
+}
+
+.cta{
+padding:80px 8%;
+background:#0a2540;
+color:#fff;
+text-align:center;
+}
+
+.cta h2{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.cta p{
+max-width:700px;
+margin:auto auto 30px;
+}
+
+.faq-section{
+padding:80px 8%;
+background:#f8f8f8;
+}
+
+.faq-title{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+color:#0a2540;
+}
+
+.faq-item{
+margin-bottom:15px;
+background:#fff;
+border-radius:8px;
+overflow:hidden;
+}
+
+.faq-question{
+width:100%;
+padding:20px;
+border:none;
+background:#fff;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+text-align:left;
+}
+
+.faq-answer{
+max-height:0;
+overflow:hidden;
+transition:max-height 0.3s ease;
+padding:0 20px;
+}
+
+.faq-answer p{
+padding-bottom:20px;
+}
+
+.footer{
+background:#111;
+color:#fff;
+padding:60px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.footer h3,
+.footer h4{
+margin-bottom:20px;
+}
+
+.footer a{
+display:block;
+margin-bottom:10px;
+color:#fff;
+text-decoration:none;
+}
+
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+z-index:999;
+}
+
+.whatsapp-float a{
+background:#25D366;
+color:#fff;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.call-float{
+position:fixed;
+bottom:90px;
+right:20px;
+z-index:999;
+}
+
+.call-float a{
+background:#0a2540;
+color:#fff;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+#chatbot-btn{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#0a2540;
+color:#fff;
+padding:16px;
+border-radius:50%;
+cursor:pointer;
+z-index:999;
+}
+
+#chatbot-box{
+position:fixed;
+bottom:80px;
+left:20px;
+width:340px;
+background:#fff;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+display:none;
+overflow:hidden;
+z-index:999;
+}
+
+#chatbot-header{
+background:#0a2540;
+color:#fff;
+padding:15px;
+font-weight:700;
+}
+
+#chatbot-body{
+padding:15px;
+font-size:14px;
+}
+
+.chat-option{
+display:block;
+background:#f1f1f1;
+margin-top:10px;
+padding:12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.chat-option:hover{
+background:#0a2540;
+color:#fff;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:36px;
+}
+
+.section-title,
+.faq-title,
+.cta h2{
+font-size:32px;
+}
+
+.header{
+flex-direction:column;
+gap:20px;
+}
+
+}
+
+</style>
 </head>
 <body>
 
